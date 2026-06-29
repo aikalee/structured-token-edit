@@ -1,3 +1,5 @@
+## Task
+The model is aimed to fixed the outputs of a upstream model, and the outputs are the dependency relations in tree format.
 ## Data
 ### Input Format
 The data is tranformed from linearized tree format to custom structured token (overlap=3), the token (referring to POS here, since each POS is representing a token) itself, left and right brackets that wrap around the token are feeded into the model as three features:
@@ -26,3 +28,17 @@ After a series of experiments, I found that including only left or right bracket
     },
 
 ```
+
+### Output format
+The output format of the model is partly the same with the input format, only the fields `token`, `left` and `right` remains in the output of the model:
+```
+{
+  "token": "NOUN",
+  "left": ["(TOP", "(ROOT", "(ADV", "(NMOD", "(NMOD"],
+  "right": [")NMOD"],
+},
+
+```
+
+## Model Architecture
+Due to the complexity of the task, I decomposed the task into two parts: one model is responsible for predicting the correct left and right labels for each structured token and the other model predicts where the corrections should happen.
