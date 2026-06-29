@@ -2,7 +2,7 @@
 The model is aimed to fixed the outputs of a upstream model, and the outputs are the dependency relations in tree format.
 ## Data
 ### Input Format
-The data is tranformed from linearized tree format to custom structured token (overlap=3), the token (referring to POS here, since each POS is representing a token) itself, left and right brackets that wrap around the token are feeded into the model as three features:
+The data is tranformed from linearized tree format to custom data format call Structured Token, the token (referring to POS here, since each POS is representing a token) itself, left and right brackets that wrap around the token are feeded into the model as three features:
 
 In the `base` field, `left` includes to all the left brackets to the token, and `right` containa all the right brackets to the token before seeing the next left brackets.
 
@@ -41,4 +41,4 @@ The output format of the model is partly the same with the input format, only th
 ```
 
 ## Model Architecture
-Due to the complexity of the task, I decomposed the task into two parts: one model is responsible for predicting the correct left and right labels for each structured token and the other model predicts where the corrections should happen.
+Due to the complexity of the task, I decomposed the task into two parts and built two independent models to handle the two tasks. The first model called StructureTokenGate predicts where the corrections should happen, and the other model called StructuredTokenDeocder is responsible for predicting the correct left and right labels for each structured token.
