@@ -42,3 +42,7 @@ The output format of the model is partly the same with the input format, only th
 
 ## Model Architecture
 Due to the complexity of the task, I decomposed the task into two parts and built two independent models to handle the two tasks. The first model called StructureTokenGate predicts where the corrections should happen, and the other model called StructuredTokenDeocder is responsible for predicting the correct left and right labels for each structured token.
+
+The StructuredTokenGate return 1 and 0; 1 means edit needed and 0 refers to keep.
+
+Since there are two independent models, there is a predictor that combines the results given by the two models. If the StructuredTokenGate returns 1, the predictions from the StructureTokenGate will be adopted. In the another way round, if the gate returns 0, the original predictions from the upstream model will be kept.
