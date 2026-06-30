@@ -49,6 +49,11 @@ The StructuredTokenGate return 1 and 0; 1 means edit needed and 0 refers to keep
 
 Since there are two independent models, there is a predictor that combines the results given by the two models. If the StructuredTokenGate returns 1, the predictions from the StructureTokenGate will be adopted. In the another way round, if the gate returns 0, the original predictions from the upstream model will be kept.
 
+## Training strategies
+### Loss function
+
+### Schedulers
+
 ## Results
 ### Decoder
 
