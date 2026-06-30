@@ -51,17 +51,24 @@ Since there are two independent models, there is a predictor that combines the r
 ### Model Architecture
 4 expeirmental model architecture were tested.
 
-| # | Experiment                                                                                |
-|---|-------------------------------------------------------------------------------------------|
-| 1 | In the very first version, the decoder and the gate share the same encoder.               |
-| 2 |                                                                                           |
-| 3 | The decoder and gate are two independent models.                                          |
-| 4 | There are four independent models: left decoder, right decoder, left gate and right gate. |
+| # | Experiment                                                                                           |
+|---|------------------------------------------------------------------------------------------------------|
+| 1 | The left decoder, the right decoder and the gate share one encoder.                                  |
+| 2 | While the left decoder and left gate share one encoder, the right decoder and right gate share another encoder. |
+| 3 | The decoder and gate are two independent models.                                                     |
+| 4 | There are four independent models: left decoder, right decoder, left gate and right gate.            |
 
 ### Training Strategies
 #### Loss Function
+| # | Experiment                                                                                           |
+|---|------------------------------------------------------------------------------------------------------|
+| 1 | Loss function with no edit mask to avoid gradients being dominated by the no edit samples.                 |
+| 2 | Loss function with 
+| 3 | The decoder and gate are two independent models.                                                     |
+| 4 | There are four independent models: left decoder, right decoder, left gate and right gate.            |
 
 #### Schedulers
+Since the data distribution is extremely long-tailed, I set the dropout rate to `0.0` along with a learning rate scheduler for decreasing the learning rate during training in order to make the model memorize the samples instead of generalizing the patterns.
 
 ## Results
 ### Decoder
