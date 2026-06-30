@@ -1,4 +1,4 @@
-## Task
+## Project Overview & Task
 The model is aimed to fixed the outputs of a upstream model, and the outputs are the dependency relations in tree format.
 ## Data
 ### Input Format
@@ -29,7 +29,7 @@ After a series of experiments, I found that including only left or right bracket
 
 ```
 
-### Output format
+### Output Format
 The output format of the model is partly the same with the input format, only the fields `token`, `left` and `right` remains in the output of the model:
 ```
 {
@@ -45,14 +45,16 @@ Originally, I and my instructor planned to use T5 for this downstream fixing tas
 
 Due to the complexity of the task, I decomposed the task into two parts and built two independent models to handle the two tasks. The first model called StructureTokenGate predicts where the corrections should happen, and the other model called StructuredTokenDeocder is responsible for predicting the correct left and right labels for each structured token. The decoder is limited to token level instead of sentence level.
 
-The StructuredTokenGate return 1 and 0; 1 means edit needed and 0 refers to keep.
+Since there are two independent models, there is a predictor that combines the results given by the two models. The StructuredTokenGate return 1 and 0; 1 means edit needed and 0 refers to keep. If the gate returns 1, the predictions from the StructureTokenGate will be adopted. If the gate returns 0, the original predictions from the upstream model will be kept.
 
-Since there are two independent models, there is a predictor that combines the results given by the two models. If the StructuredTokenGate returns 1, the predictions from the StructureTokenGate will be adopted. In the another way round, if the gate returns 0, the original predictions from the upstream model will be kept.
+## Experiments
+### Model Architecture
+4 expeirmental model architecture were tested. In the very first version, the decoder and the gate share the same encoder.
 
-## Training strategies
-### Loss function
+### Training Strategies
+#### Loss Function
 
-### Schedulers
+#### Schedulers
 
 ## Results
 ### Decoder
