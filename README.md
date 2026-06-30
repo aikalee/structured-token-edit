@@ -50,15 +50,13 @@ Since there are two independent models, there is a predictor that combines the r
 ## Experiments
 ### Model Architecture
 4 expeirmental model architecture were tested.
-#### Experiment 1
-In the very first version, the decoder and the gate share the same encoder. 
-#### Experiment 2
 
-#### Experiment 3
-The decoder and gate are two independent models.
-
-#### Experiment 4
-There are four independent models: left decoder, right decoder, left gate and right gate.
+| # | Experiment                                                                                |
+|---|-------------------------------------------------------------------------------------------|
+| 1 | In the very first version, the decoder and the gate share the same encoder.               |
+| 2 |                                                                                           |
+| 3 | The decoder and gate are two independent models.                                          |
+| 4 | There are four independent models: left decoder, right decoder, left gate and right gate. |
 
 ### Training Strategies
 #### Loss Function
