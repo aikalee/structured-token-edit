@@ -59,16 +59,22 @@ Since there are two independent models, there is a predictor that combines the r
 | 4 | There are four independent models: left decoder, right decoder, left gate and right gate.            |
 
 ### Training Strategies
+Different loss functions were adopted to avoid gradients being dominated by the no edit samples in gate and frequent dependency labels in decoder.   
 #### Loss Function
 | # | Experiment                                                                                           |
 |---|------------------------------------------------------------------------------------------------------|
-| 1 | Loss function with no edit mask to avoid gradients being dominated by the no edit samples.                 |
-| 2 | Loss function with 
-| 3 | The decoder and gate are two independent models.                                                     |
-| 4 | There are four independent models: left decoder, right decoder, left gate and right gate.            |
+| 1 | Loss function with no edit mask                                                                      |
+| 2 | Loss function with class weights                                                                     |
+| 3 | Focal loss                                                                                           |
+
 
 #### Schedulers
+
+ 1. Learning rate schedulers \
 Since the data distribution is extremely long-tailed, I set the dropout rate to `0.0` along with a learning rate scheduler for decreasing the learning rate during training in order to make the model memorize the samples instead of generalizing the patterns.
+2. Custom dataset schedulers \
+As the no edit samples is dominating, I added the a dataset scheduler to ensure the model learns the edit samples in the early training stage, and then learn no edit samples afterwards.
+
 
 ## Results
 ### Decoder
