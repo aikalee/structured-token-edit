@@ -1,4 +1,5 @@
-## Project Overview & Task
+# Structured Token Editing
+## Project Overview
 The model is aimed to fixed the outputs of a upstream model, and the outputs are the dependency relations in tree format.
 ## Data
 ### Input Format
@@ -47,6 +48,8 @@ Due to the complexity of the task, I decomposed the task into two parts and buil
 
 Since there are two independent models, there is a predictor that combines the results given by the two models. The StructuredTokenGate return 1 and 0; 1 means edit needed and 0 refers to keep. If the gate returns 1, the predictions from the StructureTokenGate will be adopted. If the gate returns 0, the original predictions from the upstream model will be kept.
 
+[image here]
+
 ## Experiments
 ### Model Architecture
 4 expeirmental model architecture were tested.
@@ -78,4 +81,8 @@ As the no edit samples is dominating, I added the a dataset scheduler to ensure 
 
 ## Results
 ### Decoder
+### Gate
+
+## Failed Experiments
+
 
