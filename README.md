@@ -1,6 +1,7 @@
 # Structured Token Editing
 ## Project Overview
 The model is aimed to fixed the outputs of a upstream model, and the outputs are the dependency relations in tree format.
+## Quick Start
 ## Data
 ### Input Format
 The data is tranformed from linearized tree format to custom data format call Structured Token. In linearized tree format, the token are delexicalized (i.e., represented by their corresponding POS). The token itself, left and right brackets that wrap around the token are feeded into the model as three features:
